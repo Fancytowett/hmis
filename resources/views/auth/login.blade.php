@@ -1,13 +1,22 @@
+<style type="text/css">
+    body{
+        background-position:center;
+        background-image:url("{{asset('img2/login.jpg')}}")!important;
+    }
+
+</style>
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<div class="container" id="login_bg)">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+            <div class="card" style="width: 80%;opacity: 0.8; margin-left:50px;height: 100%;padding-top: 80px;padding-left: 50px;padding-right: 50px;margin-top: 50px;" >
 
-                <div class="card-body">
+                <div class="card-body" >
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
