@@ -8,8 +8,8 @@
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
             <!-- User Info-->
-            <div class="sidenav-header-inner text-center"><img src="img/avatar-2.jpg" alt="person"
-                                                               class="img-fluid rounded-circle">
+            {{--<div class="sidenav-header-inner text-center"><img src="img/avatar-2.jpg" alt="person"--}}
+                                                               {{--class="img-fluid rounded-circle">--}}
                 <h2 class="h5">{{strtoupper(Auth::user()->name)}}</h2><span>Welcome</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->

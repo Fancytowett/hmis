@@ -33,7 +33,7 @@ Route::get('/edit_patient/{id}', 'PatientController@edit')->name('edit_patient')
 Route::get('/edit_patient_rec/{id}', 'PatientController@edit_patient_rec')->name('edit_patient_rec');
 Route::get('/destroy_patient/{id}', 'PatientController@destroy')->name('destroy_patient');
 Route::get('/index_patient', 'PatientController@index')->name('index_patient');
-Route::get('/index_patient_rec', 'PatientController@index_patient_rec')->name('index_patient_rec');
+Route::get('/patient_index_rec_dash', 'PatientController@index_patient_rec')->name('index_patient_rec');
 Route::post('/update_patient/{id}', 'PatientController@update')->name('update_patient');
 Route::get('/patient_dia', 'PatientController@patient_diagnosis')->name('p_d');
 Route::get('/add_doctor', 'DoctorController@create')->name('add_doctor');

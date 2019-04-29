@@ -73,7 +73,7 @@ class PatientController extends Controller
 //        dd($patient);
         $patient->save();
 
-        return redirect('/patient_index_rec')->with('message', 'Patient is successfully added');
+        return redirect('/patient_index_rec_dash')->with('message', 'Patient is successfully added');
     }
 
     public function index()

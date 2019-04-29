@@ -13,9 +13,7 @@
                                                                {{--class="img-fluid rounded-circle">--}}
                 <h2 class="h5">{{strtoupper(Auth::user()->name)}}</h2><span>Welcome</span>
             </div>
-            <!-- Small Brand information, appears on minimized sidebar-->
-            <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center">
-                    <strong>B</strong><strong class="text-primary">D</strong></a></div>
+
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
