@@ -119,26 +119,33 @@ class DoctorController extends Controller
 
     public function doc_schedule()
     {
-        $doctor=Doctor::where('user_id',auth()->user()->id)->first();
-       $room_doc=Room_Doctor::where('doctor_id',$doctor->id)->first();
+        $doctor = Doctor::where('user_id', auth()->user()->id)->first();
+        $room_doc = Room_Doctor::where('doctor_id', $doctor->id)->first();
 //        $schedules=Schedule::where('room_doc',$room_doc->id)->get();
-        $diagnosis=Diagnosis::all();
-        foreach ($diagnosis as $diagno){
-          $read_schedules=Schedule::where('room_doc',$room_doc->id)->where('id',$diagno->schedule_id)->get();
-            foreach ($read_schedules as $sche){
+        if ($diagnosis = Diagnosis::all()) {
 
-                $sche=Schedule::findOrFail($sche->id);
-                $sche->patient_id=$sche->patient_id;
-                $sche->room_doc=$sche->room_doc;
-                $sche->status=1;
+            foreach ($diagnosis as $diagno) {
+                ($read_schedules = Schedule::where('room_doc', $room_doc->id)->where('id', $diagno->schedule_id)->get());
+                foreach ($read_schedules as $sche) {
+
+                    $sche = Schedule::findOrFail($sche->id);
+                    $sche->patient_id = $sche->patient_id;
+                    $sche->room_doc = $sche->room_doc;
+                    $sche->status = 1;
 //                dd($sche);
-                $sche->save();
+                    $sche->save();
+                }
+
             }
-          $schedules=Schedule::where('room_doc',$room_doc->id)->where('status',0)->get();
-            return view('schedule_only',compact('schedules'));
+
+            $schedules = Schedule::where('room_doc', $room_doc->id)->where('status', 0)->get();
+            return view('schedule_only', compact('schedules'));
+        }else{
+
+            return view('schedule_only', compact('schedules'));
+
+
         }
-
-
   }
 
     public function show_doc()
@@ -151,18 +158,12 @@ class DoctorController extends Controller
     public function doc_dash()
 
     {
-        $doctor=Doctor::where('user_id',auth()->user()->id)->first();
-        $room_doc=Room_Doctor::where('doctor_id',$doctor->id)->first();
-        $schedules=Schedule::where('room_doc',$room_doc->id)->get();
-        foreach ($schedules as $schedule){
-            if(Gate::allows('diagnosis',$schedule->id)){
-        return view('dash.doc_dash',compact('schedules'));
-    }else{
+        $doctor = Doctor::where('user_id', auth()->user()->id)->first();
+        $room_doc = Room_Doctor::where('doctor_id', $doctor->id)->first();
+        $schedules = Schedule::where('room_doc', $room_doc->id)->get();
 
-                return view('dash.doc_dash',compact('schedules'));
+        return view('dash.doc_dash', compact('schedules'));
 
-            }
-        }
-//        return view('dash.doc_dash',compact('schedules'));
-}
+
+    }
 }
